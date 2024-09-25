@@ -12,8 +12,10 @@ app.use(bodyParser.json());
 
 // Endpoint to receive data
 app.post('/data', (req, res) => {
-    console.log('Received data:', req.body);
-    res.json({ message: 'Data received successfully!' });
+    const { temperature, humidity } = req.body;
+    console.log(`Received data - Temperature: ${temperature}, Humidity: ${humidity}`);
+    // Respond with a success message
+    res.status(200).send('Data received successfully!');
 });
 
 app.get('/',(req,res)=>{
